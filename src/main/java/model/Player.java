@@ -1,14 +1,14 @@
-package entity;
+package model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "players")
+@Table(name = "Players")
 public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(unique = true, nullable = false)
     private String name;

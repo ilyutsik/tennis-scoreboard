@@ -10,7 +10,8 @@ public class HibernateUtil {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(entity.Player.class);
+                configuration.addAnnotatedClass(model.Player.class);
+                configuration.addAnnotatedClass(model.Match.class);
                 sessionFactory = configuration.buildSessionFactory();
             } catch (Throwable ex) {
                 System.err.println("Ошибка при создании SessionFactory: " + ex);

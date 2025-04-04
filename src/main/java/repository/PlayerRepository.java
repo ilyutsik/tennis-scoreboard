@@ -1,6 +1,6 @@
 package repository;
 
-import entity.Player;
+import model.Player;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
