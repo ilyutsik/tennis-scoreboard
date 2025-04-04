@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Драйвер H2 -->
+        <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+
+<!--        &lt;!&ndash; URL базы данных (в памяти) &ndash;&gt;-->
+<!--        <property name="hibernate.connection.url">jdbc:h2:mem:tennis</property>--> <!-- в памяти приложения, с удалением после завершения работы -->
+        <property name="hibernate.connection.url">jdbc:h2:file:./tennisdb;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE</property> <!-- файл -->
+<!--        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/tennisdb</property>--> <!-- сервер -->
+
+
+        <!-- Имя пользователя (по умолчанию sa) -->
+        <property name="hibernate.connection.username">sa</property>
+
+        <!-- Пароль (пустой по умолчанию) -->
+        <property name="hibernate.connection.password"></property>
+
+        <!-- Диалект H2 -->
+        <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+
+        <!-- Автоматическое создание схемы -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Логирование SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+    </session-factory>
+</hibernate-configuration>
