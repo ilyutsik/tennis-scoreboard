@@ -8,9 +8,8 @@
         <!-- Драйвер H2 -->
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
 
-<!--        &lt;!&ndash; URL базы данных (в памяти) &ndash;&gt;-->
-<!--        <property name="hibernate.connection.url">jdbc:h2:mem:tennis</property>--> <!-- в памяти приложения, с удалением после завершения работы -->
-        <property name="hibernate.connection.url">jdbc:h2:file:./tennisdb;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE</property> <!-- файл -->
+<!--        <property name="hibernate.connection.url">jdbc:h2:mem:tennis</property> -->
+        <property name="hibernate.connection.url">jdbc:h2:file:D:/JavaProjects/tennis-scoreboard/tennisdb;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE</property> <!-- файл -->
 <!--        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/tennisdb</property>--> <!-- сервер -->
 
 
