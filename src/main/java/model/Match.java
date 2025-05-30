@@ -3,23 +3,23 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Matches")
-public class Match {
+@Table(name = "Match")
+public class Match implements BaseEntity<Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "player1_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "player1_id", nullable = false)
     private Player Player1;
 
     @ManyToOne
-    @JoinColumn(name = "player2_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "player2_id", nullable = false)
     private Player Player2;
 
     @ManyToOne
-    @JoinColumn(name = "winner_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "winner_id", nullable = false)
     private Player winner;
 
     public Match() {
@@ -29,6 +29,16 @@ public class Match {
         Player1 = player1;
         Player2 = player2;
         this.winner = winner;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Player getPlayer1() {
@@ -53,5 +63,16 @@ public class Match {
 
     public void setWinner(Player winner) {
         this.winner = winner;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Match{" +
+                "id=" + id +
+                ", Player1=" + Player1 +
+                ", Player2=" + Player2 +
+                ", winner=" + winner +
+                '}';
     }
 }

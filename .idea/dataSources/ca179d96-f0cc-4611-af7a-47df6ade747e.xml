@@ -169,20 +169,20 @@
     <schema id="162" parent="2" name="INFORMATION_SCHEMA"/>
     <schema id="163" parent="2" name="PUBLIC">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-04-05.11:19:36</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-05-30.16:43:46</LastIntrospectionLocalTimestamp>
     </schema>
     <user id="164" parent="2" name="SA">
       <Admin>1</Admin>
     </user>
-    <table id="165" parent="163" name="MATCHES"/>
-    <table id="166" parent="163" name="PLAYERS"/>
+    <table id="165" parent="163" name="MATCH"/>
+    <table id="166" parent="163" name="PLAYER"/>
     <column id="167" parent="165" name="ID">
       <ColumnKind>generated-stored</ColumnKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
       <SequenceInline>1</SequenceInline>
-      <SequenceSequenceIdentity>1(1)</SequenceSequenceIdentity>
+      <SequenceSequenceIdentity>1(2)</SequenceSequenceIdentity>
       <SequenceStartValue>1</SequenceStartValue>
       <SequenceStoredType>INTEGER|0s</SequenceStoredType>
     </column>
@@ -201,45 +201,45 @@
       <Position>4</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="171" parent="165" name="FK89HYQX01OYFDYKPG893ONJKLS">
+    <foreign-key id="171" parent="165" name="FKO990BOVDF6OGELAHLAYJQWYI0">
       <ColNames>PLAYER1_ID</ColNames>
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
-      <RefKeyName>CONSTRAINT_D</RefKeyName>
-      <RefTableName>PLAYERS</RefTableName>
+      <RefKeyName>CONSTRAINT_8</RefKeyName>
+      <RefTableName>PLAYER</RefTableName>
     </foreign-key>
-    <foreign-key id="172" parent="165" name="FKBFS8NJRG09M5LXTUOBULUFIEA">
+    <foreign-key id="172" parent="165" name="FK7QSKOE6T0QD2TCRJ59UHJE68Y">
       <ColNames>PLAYER2_ID</ColNames>
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
-      <RefKeyName>CONSTRAINT_D</RefKeyName>
-      <RefTableName>PLAYERS</RefTableName>
+      <RefKeyName>CONSTRAINT_8</RefKeyName>
+      <RefTableName>PLAYER</RefTableName>
     </foreign-key>
-    <foreign-key id="173" parent="165" name="FKCFYODVL7M309P72TCRG28C67O">
+    <foreign-key id="173" parent="165" name="FK8R9L8E6WN8VK4T49OVLCTG075">
       <ColNames>WINNER_ID</ColNames>
       <OnDelete>restrict</OnDelete>
       <OnUpdate>restrict</OnUpdate>
-      <RefKeyName>CONSTRAINT_D</RefKeyName>
-      <RefTableName>PLAYERS</RefTableName>
+      <RefKeyName>CONSTRAINT_8</RefKeyName>
+      <RefTableName>PLAYER</RefTableName>
     </foreign-key>
-    <index id="174" parent="165" name="PRIMARY_KEY_5">
+    <index id="174" parent="165" name="PRIMARY_KEY_4">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <index id="175" parent="165" name="FK89HYQX01OYFDYKPG893ONJKLS_INDEX_5">
+    <index id="175" parent="165" name="FKO990BOVDF6OGELAHLAYJQWYI0_INDEX_4">
       <ColNames>PLAYER1_ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
     </index>
-    <index id="176" parent="165" name="FKBFS8NJRG09M5LXTUOBULUFIEA_INDEX_5">
+    <index id="176" parent="165" name="FK7QSKOE6T0QD2TCRJ59UHJE68Y_INDEX_4">
       <ColNames>PLAYER2_ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
     </index>
-    <index id="177" parent="165" name="FKCFYODVL7M309P72TCRG28C67O_INDEX_5">
+    <index id="177" parent="165" name="FK8R9L8E6WN8VK4T49OVLCTG075_INDEX_4">
       <ColNames>WINNER_ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
     </index>
-    <key id="178" parent="165" name="CONSTRAINT_5">
+    <key id="178" parent="165" name="CONSTRAINT_4">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
@@ -250,7 +250,7 @@
       <Position>1</Position>
       <StoredType>INTEGER|0s</StoredType>
       <SequenceInline>1</SequenceInline>
-      <SequenceSequenceIdentity>1(20)</SequenceSequenceIdentity>
+      <SequenceSequenceIdentity>1(3)</SequenceSequenceIdentity>
       <SequenceStartValue>1</SequenceStartValue>
       <SequenceStoredType>INTEGER|0s</SequenceStoredType>
     </column>
@@ -259,22 +259,22 @@
       <Position>2</Position>
       <StoredType>CHARACTER VARYING(255)|0s</StoredType>
     </column>
-    <index id="181" parent="166" name="PRIMARY_KEY_D">
+    <index id="181" parent="166" name="PRIMARY_KEY_8">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <index id="182" parent="166" name="UK_54633JL9TMH3NTF31KGG39FD7_INDEX_D">
+    <index id="182" parent="166" name="UK_PA46TL9F0GKUEON0SD2QAMCSX_INDEX_8">
       <ColNames>NAME</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="183" parent="166" name="CONSTRAINT_D">
+    <key id="183" parent="166" name="CONSTRAINT_8">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="184" parent="166" name="UK_54633JL9TMH3NTF31KGG39FD7">
+    <key id="184" parent="166" name="UK_PA46TL9F0GKUEON0SD2QAMCSX">
       <ColNames>NAME</ColNames>
     </key>
   </database-model>

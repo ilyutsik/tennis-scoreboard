@@ -4,6 +4,10 @@
   <groupId>org.me</groupId>
   <artifactId>tennis-scoreboard</artifactId>
   <version>1.0-SNAPSHOT</version>
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+  </properties>
   <packaging>war</packaging>
   <name>Archetype - tennis-scoreboard</name>
   <url>http://maven.apache.org</url>
@@ -26,6 +30,12 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.32</version>
     </dependency>
 
   </dependencies>

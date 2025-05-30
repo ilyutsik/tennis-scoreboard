@@ -3,12 +3,12 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Players")
-public class Player {
+@Table(name = "Player")
+public class Player implements BaseEntity<Integer>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(unique = true, nullable = false)
     private String name;
@@ -24,8 +24,14 @@ public class Player {
         return name;
     }
 
-    public int getId() {
+    @Override
+    public Integer getId() {
         return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setName(String name) {

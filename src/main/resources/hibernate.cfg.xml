@@ -5,7 +5,7 @@
 
 <hibernate-configuration>
     <session-factory>
-        <!-- Драйвер H2 -->
+
         <property name="hibernate.connection.driver_class">org.h2.Driver</property>
 
 <!--        <property name="hibernate.connection.url">jdbc:h2:mem:tennis</property> -->
@@ -13,19 +13,19 @@
 <!--        <property name="hibernate.connection.url">jdbc:h2:tcp://localhost/~/tennisdb</property>--> <!-- сервер -->
 
 
-        <!-- Имя пользователя (по умолчанию sa) -->
+
         <property name="hibernate.connection.username">sa</property>
 
-        <!-- Пароль (пустой по умолчанию) -->
+
         <property name="hibernate.connection.password"></property>
 
-        <!-- Диалект H2 -->
+
         <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
 
-        <!-- Автоматическое создание схемы -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!-- Логирование SQL -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
     </session-factory>

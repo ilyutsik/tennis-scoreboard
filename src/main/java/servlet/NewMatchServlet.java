@@ -1,7 +1,9 @@
 package servlet;
 
 import model.Player;
-import repository.PlayerRepository;
+import dao.PlayerRepository;
+import org.hibernate.Session;
+import util.HibernateUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +17,8 @@ import java.util.NoSuchElementException;
 @WebServlet("/new-match")
 public class NewMatchServlet extends HttpServlet {
 
-    PlayerRepository playerRepository = new PlayerRepository();
+    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+    PlayerRepository playerRepository = new PlayerRepository(session);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,17 +34,6 @@ public class NewMatchServlet extends HttpServlet {
         Player player1;
         Player player2;
 
-        try {
-            player1 = playerRepository.findByName(player1Name);
-        } catch (NoSuchElementException e) {
-            player1 = playerRepository.save(new Player(player1Name));
-        }
-        try {
-            player2 = playerRepository.findByName(player2Name);
-        } catch (NoSuchElementException e) {
-            player2 = playerRepository.save(new Player(player2Name));
-
-        }
 
     }
 }
