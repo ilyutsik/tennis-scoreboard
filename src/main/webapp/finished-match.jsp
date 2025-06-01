@@ -26,8 +26,8 @@
     </tr>
     <tr>
         <td>Сеты (Sets)</td>
-        <td>${ongoingMatch.gameScore.player1.sets}</td>
-        <td>${ongoingMatch.gameScore.player2.sets}</td>
+        <td>${ongoingMatch.player1Score.sets}</td>
+        <td>${ongoingMatch.player2Score.sets}</td>
     </tr>
 </table>
 </body>

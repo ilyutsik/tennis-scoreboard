@@ -1,13 +1,10 @@
 package servlet;
 
 import model.Match;
-import model.OngoingMatch;
+import game.OngoingMatch;
 import service.OngoingMatchesService;
-import org.hibernate.SessionFactory;
 import service.FinishedMatchesPersistenceService;
 import service.MatchScoreCalculationService;
-
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,17 +18,6 @@ import java.util.UUID;
 @WebServlet("/match-score")
 public class MatchScoreController extends HttpServlet {
 
-    SessionFactory sessionFactory;
-
-//    Map<UUID, OngoingMatch> ongoingMatches;
-
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-        super.init(servletConfig);
-//        ongoingMatches = (Map<UUID, OngoingMatch>) servletConfig.getServletContext().getAttribute("ongoingMatches");
-        sessionFactory = (SessionFactory) servletConfig.getServletContext().getAttribute("sessionFactory");
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uuidString = req.getParameter("uuid");
@@ -42,7 +28,6 @@ public class MatchScoreController extends HttpServlet {
         OngoingMatch ongoingMatch = ongoingMatchesService.get(uuid);
 
         req.setAttribute("ongoingMatch", ongoingMatch);
-        req.setAttribute("gameScore", ongoingMatch.getGameScore());
         req.getRequestDispatcher("match-score.jsp").forward(req, resp);
     }
 
@@ -55,12 +40,12 @@ public class MatchScoreController extends HttpServlet {
 
         OngoingMatchesService matches = OngoingMatchesService.getInstance();
         OngoingMatch ongoingMatch = matches.get(uuid);
-        MatchScoreCalculationService ongoingMatchService = new MatchScoreCalculationService();
+        MatchScoreCalculationService calculationService = new MatchScoreCalculationService(ongoingMatch);
 
-        ongoingMatchService.addPoint(pointWinnerId, ongoingMatch);
-        if (ongoingMatchService.isGameOver(ongoingMatch)) {
+        calculationService.pointWonBy(pointWinnerId);
+        if (calculationService.isGameOver()) {
 
-            Match finishedMatch = ongoingMatchService.createFinishedMatch(ongoingMatch);
+            Match finishedMatch = calculationService.getFinishedMatch();
             FinishedMatchesPersistenceService finishedMatchesPersistenceService = new FinishedMatchesPersistenceService();
             finishedMatchesPersistenceService.saveMatch(finishedMatch);
             req.setAttribute("ongoingMatch", ongoingMatch);

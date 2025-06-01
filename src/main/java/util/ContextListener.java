@@ -1,6 +1,6 @@
 package util;
 
-import model.OngoingMatch;
+import game.OngoingMatch;
 import org.hibernate.SessionFactory;
 
 import javax.servlet.ServletContext;

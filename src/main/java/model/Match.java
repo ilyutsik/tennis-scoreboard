@@ -12,11 +12,11 @@ public class Match implements BaseEntity<Integer> {
 
     @ManyToOne
     @JoinColumn(name = "player1_id", nullable = false)
-    private Player Player1;
+    private Player player1;
 
     @ManyToOne
     @JoinColumn(name = "player2_id", nullable = false)
-    private Player Player2;
+    private Player player2;
 
     @ManyToOne
     @JoinColumn(name = "winner_id", nullable = false)
@@ -26,8 +26,8 @@ public class Match implements BaseEntity<Integer> {
     }
 
     public Match(Player player1, Player player2, Player winner) {
-        Player1 = player1;
-        Player2 = player2;
+        this.player1 = player1;
+        this.player2 = player2;
         this.winner = winner;
     }
 
@@ -42,19 +42,19 @@ public class Match implements BaseEntity<Integer> {
     }
 
     public Player getPlayer1() {
-        return Player1;
+        return player1;
     }
 
     public void setPlayer1(Player player1) {
-        Player1 = player1;
+        this.player1 = player1;
     }
 
     public Player getPlayer2() {
-        return Player2;
+        return player2;
     }
 
     public void setPlayer2(Player player2) {
-        Player2 = player2;
+        this.player2 = player2;
     }
 
     public Player getWinner() {
@@ -70,8 +70,8 @@ public class Match implements BaseEntity<Integer> {
     public String toString() {
         return "Match{" +
                 "id=" + id +
-                ", Player1=" + Player1 +
-                ", Player2=" + Player2 +
+                ", Player1=" + player1 +
+                ", Player2=" + player2 +
                 ", winner=" + winner +
                 '}';
     }

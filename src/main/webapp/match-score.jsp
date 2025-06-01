@@ -1,4 +1,4 @@
-<%@ page import="model.OngoingMatch" %>
+<%@ page import="game.OngoingMatch" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,33 +28,33 @@
     </tr>
     <%
         OngoingMatch ongoingMatch = (OngoingMatch) request.getAttribute("ongoingMatch");
-        if (ongoingMatch.getGameScore().getPlayer1().getExtraPoints() == 0 && ongoingMatch.getGameScore().getPlayer2().getExtraPoints() == 0) {
+        if (ongoingMatch != null && ongoingMatch.getPlayer1Score().getExtraPoints() == 0 && ongoingMatch.getPlayer2Score().getExtraPoints() == 0) {
     %>
     <tr>
         <td>points</td>
-        <td>${ongoingMatch.gameScore.player1.points.value}</td>
-        <td>${ongoingMatch.gameScore.player2.points.value}</td>
+        <td>${ongoingMatch.player1Score.points.value}</td>
+        <td>${ongoingMatch.player2Score.points.value}</td>
     </tr>
     <%
     } else {
     %>
     <tr>
         <td>tie-break</td>
-        <td>${ongoingMatch.gameScore.player1.extraPoints}</td>
-        <td>${ongoingMatch.gameScore.player2.extraPoints}</td>
+        <td>${ongoingMatch.player1Score.extraPoints}</td>
+        <td>${ongoingMatch.player2Score.extraPoints}</td>
     </tr>
     <%
         }
     %>
     <tr>
         <td>games</td>
-        <td>${gameScore.player1.games}</td>
-        <td>${gameScore.player2.games}</td>
+        <td>${ongoingMatch.player1Score.games}</td>
+        <td>${ongoingMatch.player2Score.games}</td>
     </tr>
     <tr>
         <td>sets</td>
-        <td>${gameScore.player1.sets}</td>
-        <td>${gameScore.player2.sets}</td>
+        <td>${ongoingMatch.player1Score.sets}</td>
+        <td>${ongoingMatch.player2Score.sets}</td>
     </tr>
     <tr>
         <td>Выйграл</td>

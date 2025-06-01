@@ -7,7 +7,7 @@
         <form action="new-match" method="get">
             <button type="submit">New Match</button>
         </form>
-        <form action="match-list" method="get">
+        <form action="matches" method="get">
             <button type="submit">Matches</button>
         </form>
     </div>

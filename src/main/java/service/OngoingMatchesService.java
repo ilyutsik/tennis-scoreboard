@@ -1,6 +1,6 @@
 package service;
 
-import model.OngoingMatch;
+import game.OngoingMatch;
 
 import java.util.HashMap;
 import java.util.Map;

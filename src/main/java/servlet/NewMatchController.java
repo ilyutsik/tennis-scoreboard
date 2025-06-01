@@ -1,7 +1,7 @@
 package servlet;
 
 import exception.InternalServerError;
-import model.OngoingMatch;
+import game.OngoingMatch;
 import service.OngoingMatchesService;
 import model.Player;
 import org.hibernate.SessionFactory;

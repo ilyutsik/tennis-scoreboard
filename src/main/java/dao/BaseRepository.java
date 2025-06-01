@@ -9,10 +9,18 @@ import java.util.Optional;
 
 public abstract class BaseRepository<K extends Serializable, E extends BaseEntity<K>> implements Repository<K, E> {
 
-    private final Session session;
+    protected final Session session;
 
     private final Class<E> entityClass;
 
+    public BaseRepository(Session session, Class<E> entityClass) {
+        this.session = session;
+        this.entityClass = entityClass;
+    }
+
+    public Session getSession() {
+        return session;
+    }
 
     @Override
     public E save(E entity) {
@@ -42,12 +50,4 @@ public abstract class BaseRepository<K extends Serializable, E extends BaseEntit
         return session.createQuery(criteria).getResultList();
     }
 
-    public BaseRepository(Session session, Class<E> entityClass) {
-        this.session = session;
-        this.entityClass = entityClass;
-    }
-
-    public Session getSession() {
-        return session;
-    }
 }
