@@ -1,13 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" />
+
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Home page</title>
+    <title>Main page</title>
 </head>
 <body>
-<form method="get" action="new-match">
-    <button type="submit">New match</button>
-</form>
+<%@ include file="header.jsp" %>
+
+
 </body>
 </html>

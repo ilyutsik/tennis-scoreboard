@@ -46,4 +46,8 @@ public abstract class BaseRepository<K extends Serializable, E extends BaseEntit
         this.session = session;
         this.entityClass = entityClass;
     }
+
+    public Session getSession() {
+        return session;
+    }
 }

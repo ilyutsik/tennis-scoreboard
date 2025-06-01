@@ -3,9 +3,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Новый матч</title>
+    <title>New match</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <h2>Новый матч</h2>
 <form method="post" action="new-match">
     Имя игрока 1: <input type="text" name="player1" required><br><br>
