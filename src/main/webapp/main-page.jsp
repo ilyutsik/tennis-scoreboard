@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css" />
+<style><%@ include file="/css/header.css"%></style>
 
 <html>
 <head>

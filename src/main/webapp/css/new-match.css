@@ -1,0 +1,44 @@
+
+.center-container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-match-box {
+    background-color: #f2f2f2;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.new-match-text {
+    margin-bottom: 100px;
+    color: #333;
+}
+
+.new-match-box input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.new-match-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.new-match-box button:hover {
+    background-color: #45a049;
+}

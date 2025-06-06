@@ -13,7 +13,7 @@ public class MatchScoreCalculationService {
     private static final Integer setsToWin = 2;
     private static final Integer gamesToWinSet = 6;
     private static final Integer minDifferenceBetweenGamesToWin = 2;
-    private static final Integer extraPointsToWin = 6;
+    private static final Integer extraPointsToWin = 7;
     private static final Integer minDifferenceBetweenExtraPointsToWin = 2;
 
     OngoingMatch ongoingMatch;
@@ -67,14 +67,14 @@ public class MatchScoreCalculationService {
                 player2.addExtraPoint();
             }
 
-            if (player1.getExtraPoints() > extraPointsToWin && player1.getExtraPoints() - minDifferenceBetweenExtraPointsToWin >= player2.getExtraPoints()) {
+            if (player1.getExtraPoints() >= extraPointsToWin && player1.getExtraPoints() - minDifferenceBetweenExtraPointsToWin >= player2.getExtraPoints()) {
                 player1.addSet();
                 player1.setGames(0);
                 player2.setGames(0);
                 player1.setExtraPoints(0);
                 player2.setExtraPoints(0);
             }
-            if (player2.getExtraPoints() > extraPointsToWin && player2.getExtraPoints() - minDifferenceBetweenExtraPointsToWin >= player1.getExtraPoints()) {
+            if (player2.getExtraPoints() >= extraPointsToWin && player2.getExtraPoints() - minDifferenceBetweenExtraPointsToWin >= player1.getExtraPoints()) {
                 player2.addSet();
                 player1.setGames(0);
                 player2.setGames(0);
@@ -87,20 +87,20 @@ public class MatchScoreCalculationService {
         if (player1.getPoints() == Point.equal && player2.getPoints() == Point.equal) {
             if (isPlayer1) {
                 player1.setPoints(Point.more);
+                player2.setPoints(Point.less);
             } else {
                 player2.setPoints(Point.more);
+                player1.setPoints(Point.less);
             }
         } else if (player1.getPoints() == Point.more || player2.getPoints() == Point.more) {
-            if (isPlayer1 && player1.getPoints() == Point.more || !isPlayer1 && player2.getPoints() == Point.more) {
-                if (isPlayer1) {
-                    player1.setPoints(Point.game);
-                    resetPoints();
-                    player1.addGame();
-                } else {
-                    player2.setPoints(Point.game);
-                    resetPoints();
-                    player2.addGame();
-                }
+            if (isPlayer1 && player1.getPoints() == Point.more) {
+                player1.setPoints(Point.game);
+                resetPoints();
+                player1.addGame();
+            } else if (!isPlayer1 && player2.getPoints() == Point.more) {
+                player2.setPoints(Point.game);
+                resetPoints();
+                player2.addGame();
             } else {
                 player1.setPoints(Point.equal);
                 player2.setPoints(Point.equal);
@@ -134,12 +134,12 @@ public class MatchScoreCalculationService {
     }
 
     private void addGame() {
-        if (player1.getGames().equals(gamesToWinSet) && (player1.getGames() - minDifferenceBetweenGamesToWin >= player2.getGames())) {
+        if (player1.getGames() >= gamesToWinSet && (player1.getGames() - minDifferenceBetweenGamesToWin >= player2.getGames())) {
             player1.addSet();
             player1.setGames(0);
             player2.setGames(0);
         }
-        if (player2.getGames().equals(gamesToWinSet) && player2.getGames() - minDifferenceBetweenGamesToWin >= player1.getGames()) {
+        if (player2.getGames() >= gamesToWinSet && player2.getGames() - minDifferenceBetweenGamesToWin >= player1.getGames()) {
             player2.addSet();
             player1.setGames(0);
             player2.setGames(0);

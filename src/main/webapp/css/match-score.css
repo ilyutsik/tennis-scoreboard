@@ -1,0 +1,42 @@
+.center-container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.match-score-text {
+    margin-bottom: 100px;
+    color: #333;
+}
+
+.match-table {
+    border-collapse: collapse;
+    width: 30%;
+    margin: 20px;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
+.win-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.win-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}

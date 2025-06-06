@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Matches</title>
+    <style><%@ include file="/css/header.css"%></style>
     <style>
         table {
             border-collapse: collapse;

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Match end</title>
+    <style><%@ include file="/css/header.css"%></style>
     <style>
         table {
             border-collapse: collapse;
