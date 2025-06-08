@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -34,24 +36,38 @@ public class MatchScoreController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pointWinnerIdStr = req.getParameter("pointWinnerID");
+
         String uuidString = req.getParameter("uuid");
         UUID uuid = UUID.fromString(uuidString);
+        if (Objects.equals(pointWinnerIdStr, "null")) {
+            String redirectUrl = req.getContextPath() + "/match-score?uuid=" + uuid.toString();
+            resp.sendRedirect(redirectUrl);
+            return;
+        }
         Integer pointWinnerId = Integer.parseInt(pointWinnerIdStr);
 
         OngoingMatchesService matches = OngoingMatchesService.getInstance();
         OngoingMatch ongoingMatch = matches.get(uuid);
+        if (ongoingMatch == null) {
+            String redirectUrl = req.getContextPath() + "/matches";
+            resp.sendRedirect(redirectUrl);
+            return;
+        }
         MatchScoreCalculationService calculationService = new MatchScoreCalculationService(ongoingMatch);
 
         calculationService.pointWonBy(pointWinnerId);
         if (calculationService.isGameOver()) {
+            req.setAttribute("ongoingMatch", ongoingMatch);
+            matches.remove(uuid);
 
             Match finishedMatch = calculationService.getFinishedMatch();
+            req.setAttribute("winerName", finishedMatch.getWinner().getName());
+
             FinishedMatchesPersistenceService finishedMatchesPersistenceService = new FinishedMatchesPersistenceService();
             finishedMatchesPersistenceService.saveMatch(finishedMatch);
-            req.setAttribute("ongoingMatch", ongoingMatch);
-            req.setAttribute("winerName", finishedMatch.getWinner().getName());
+
+
             req.getRequestDispatcher("finished-match.jsp").forward(req, resp);
-            matches.remove(uuid);
             return;
         }
 

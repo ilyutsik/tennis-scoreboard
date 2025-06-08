@@ -23,7 +23,7 @@
         if (ongoingMatch != null && ongoingMatch.getPlayer1Score().getExtraPoints() == 0 && ongoingMatch.getPlayer2Score().getExtraPoints() == 0) {
     %>
     <tr>
-        <td>points</td>
+        <td class="points-name">points</td>
         <td>${ongoingMatch.player1Score.points.value}</td>
         <td>${ongoingMatch.player2Score.points.value}</td>
     </tr>
@@ -48,20 +48,23 @@
         <td>${ongoingMatch.player1Score.sets}</td>
         <td>${ongoingMatch.player2Score.sets}</td>
     </tr>
+    <tr class="tr-buttons">
 
+        <td></td>
+        <td>
+            <form method="post" action="match-score?uuid=${param.uuid}">
+                <input type="hidden" name="pointWinnerID" value=${ongoingMatch.player1.id}><br><br>
+                <button class="first-button" type="submit" onclick="this.disabled=true; this.form.submit();">win</button>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="match-score?uuid=${param.uuid}">
+                <input type="hidden" name="pointWinnerID" value=${ongoingMatch.player2.id}><br><br>
+                <button class="second-button" type="submit" onclick="this.disabled=true; this.form.submit();">win</button>
+            </form>
+        </td>
+    </tr>
 </table>
-
-    <div class="win-form">
-    <form method="post" action="match-score?uuid=${param.uuid}">
-        <input type="hidden" name="pointWinnerID" value=${ongoingMatch.player1.id}><br><br>
-        <button type="submit">win</button>
-    </form>
-
-    <form method="post" action="match-score?uuid=${param.uuid}">
-        <input type="hidden" name="pointWinnerID" value=${ongoingMatch.player2.id}><br><br>
-        <button type="submit">win</button>
-    </form>
-    </div>
 
 </div>
 </body>

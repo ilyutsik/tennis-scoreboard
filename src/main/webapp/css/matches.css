@@ -1,0 +1,113 @@
+.center-container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.matches-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.matches-table th, .matches-table td {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 5px;
+    width: 12.5%;
+    height: 40px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.win-player1 {
+    background-color: cornflowerblue;
+}
+.win-player2 {
+    background-color: indianred;
+}
+
+.matches-table tr:first-child th:nth-child(2) {
+    background-color: cornflowerblue;
+}
+
+.matches-table tr:first-child th:nth-child(3) {
+    background-color: indianred;
+}
+
+.find-by-name-box input[type="text"] {
+    width: 200px;
+    height: 41px;
+    padding: 10px;
+    margin: 8px 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.find-by-name-box button {
+    width: 80px;
+    height: 40px;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.find-by-page-box input[type="text"]{
+    width: 60px;
+    height: 41px;
+    padding: 10px;
+    margin: 8px 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.find-by-page-box button {
+    width: 60px;
+    height: 40px;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.name-form {
+    display: flex;
+    gap: 10px; /* расстояние между input и button */
+    align-items: center;
+}
+
+.page-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.page-up-down {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.page-up-down button {
+    width: 60px;
+    height: 40px;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}

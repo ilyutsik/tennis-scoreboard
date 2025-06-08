@@ -1,0 +1,52 @@
+.winner-name {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.center-container {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 20px;
+    width: 490px;
+    transform: translateX(-35px); /* сдвиг влево на 40px */
+
+
+
+}
+.score-table th, .score-table td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+    height: 40px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.score-table tr th:first-child,
+.score-table tr td:first-child {
+    width: 70px; /* первая колонка — служебная*/
+}
+
+.score-table tr th:nth-child(2),
+.score-table tr td:nth-child(2),
+.score-table tr th:nth-child(3),
+.score-table tr td:nth-child(3) {
+    width: 210px; /* одинаковая ширина для 2 и 3 */
+}
+
+.score-table tr:first-child th:nth-child(2) {
+    background-color: cornflowerblue;
+}
+
+.score-table tr:first-child th:nth-child(3) {
+    background-color: indianred;
+}
+

@@ -1,4 +1,5 @@
 <%@ page import="game.MatchPage" %>
+<%@ page import="model.Match" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -6,23 +7,12 @@
 <head>
     <title>Matches</title>
     <style><%@ include file="/css/header.css"%></style>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid #000;
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
+    <style><%@ include file="/css/matches.css"%></style>
 </head>
 <body>
 <%@ include file="header.jsp" %>
-
-<table>
+<div class="center-container">
+<table class="matches-table">
     <tr>
         <th>ID</th>
         <th>player 1</th>
@@ -34,11 +24,13 @@
             <td>${match.id}</td>
             <td>${match.player1.name}</td>
             <td>${match.player2.name}</td>
-            <td>${match.winner.name}</td>
+            <td class="${match.player1.name == match.winner.name ? 'win-player1' : 'win-player2'}">${match.winner.name}</td>
         </tr>
     </c:forEach>
 
 </table>
+</div>
+
 <%
     String playerName = request.getParameter("filter_by_player_name");
     if (playerName == null) playerName = "";
@@ -49,27 +41,31 @@
     Integer pageUp = currentPage + 1 > lastPage ? currentPage : currentPage + 1;
     Integer pageDown = currentPage - 1 < 1 ? currentPage : currentPage - 1;
 %>
-<form method="get" action="matches">
-    <input type="text" name="filter_by_player_name" placeholder="player name"><br><br>
+<div class="name-form">
+<form method="get" action="matches" class="find-by-name-box">
+    <input type="text" name="filter_by_player_name" placeholder="player name">
     <button type="submit">search</button>
 </form>
-<form method="get" action="matches">
-    <input type="hidden" name="filter_by_player_name" value=<%=playerName%>><br><br>
-    <input type="text" name="page" placeholder="page"><br><br>
+</div>
+<div class="page-form">
+<form method="get" action="matches" class="find-by-page-box">
+    <input type="hidden" name="filter_by_player_name" value=<%=playerName%>>
+    <input type="text" name="page" placeholder="page">
     <button type="submit">page</button>
 </form>
+</div>
+<div class="page-up-down">
 <form method="get" action="matches">
-    <input type="hidden" name="filter_by_player_name" value=<%=playerName%>><br><br>
-    <input type="hidden" name="page" value=<%=pageDown%> ><br><br>
+    <input type="hidden" name="filter_by_player_name" value=<%=playerName%>>
+    <input type="hidden" name="page" value=<%=pageDown%>>
     <button type="submit"><</button>
 </form>
-<form method="get" action="matches">
-    <input type="hidden" name="filter_by_player_name" value=<%=playerName%>><br><br>
-    <input type="hidden" name="page" value=<%=pageUp%> ><br><br>
+    <div>${matchPage.pageNumber}/${matchPage.countOfPages}</div>
+    <form method="get" action="matches">
+    <input type="hidden" name="filter_by_player_name" value=<%=playerName%>>
+    <input type="hidden" name="page" value=<%=pageUp%>>
     <button type="submit">></button>
 </form>
-
-<div>${matchPage.pageNumber}/${matchPage.countOfPages}</div>
-
+</div>
 </body>
 </html>
