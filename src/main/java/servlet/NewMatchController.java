@@ -47,7 +47,7 @@ public class NewMatchController extends HttpServlet {
         }
 
         if (player2Name.equals(player1Name)) {
-            req.setAttribute("error", "Player names cant be equal");
+            req.setAttribute("error", "Players name can`t be the same");
             req.getRequestDispatcher("new-match.jsp").forward(req, resp);
         }
 
