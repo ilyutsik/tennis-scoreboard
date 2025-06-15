@@ -42,3 +42,8 @@
 .new-match-box button:hover {
     background-color: #45a049;
 }
+
+.error {
+    padding-bottom:27px;
+    color: red;
+}

@@ -3,6 +3,9 @@
 <div class="header">
     <h2></h2>
     <div class="header-buttons">
+        <form action="main" method="get">
+            <button type="submit">Home</button>
+        </form>
         <form action="matches" method="get">
             <button type="submit">Matches</button>
         </form>

@@ -4,6 +4,7 @@ import dao.PlayerRepository;
 import game.OngoingMatch;
 import model.Match;
 import model.Player;
+import org.h2.tools.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import service.PlayerService;
@@ -17,15 +18,21 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
-
-        Player player = new Player("Gena");
-
-        Player player2 = player;
-
-        player2.setName("NE Gena");
-
-        System.out.println(player);
-        System.out.println(player2);
+        try {
+            Server.createWebServer("-web", "-webAllowOthers", "-webPort", "8082").start();
+            System.out.println("H2 console available at http://localhost:8082");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//
+//        Player player = new Player("Gena");
+//
+//        Player player2 = player;
+//
+//        player2.setName("NE Gena");
+//
+//        System.out.println(player);
+//        System.out.println(player2);
 
 //        var sessionFactory = HibernateUtil.getSessionFactory();
 //

@@ -9,7 +9,11 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null || sessionFactory.isClosed()) {
             try {
+                String user = System.getenv("DB_USER");
+                String pass = System.getenv("DB_PASS");
                 Configuration configuration = new Configuration().configure();
+                configuration.setProperty("hibernate.connection.username", user);
+                configuration.setProperty("hibernate.connection.password", pass);
                 configuration.addAnnotatedClass(model.Player.class);
                 configuration.addAnnotatedClass(model.Match.class);
                 sessionFactory = configuration.buildSessionFactory();

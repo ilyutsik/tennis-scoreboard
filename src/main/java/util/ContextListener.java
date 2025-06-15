@@ -14,7 +14,6 @@ public class ContextListener implements ServletContextListener {
 
     SessionFactory sessionFactory;
 
-    Map<UUID, OngoingMatch> ongoingMatches;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -22,10 +21,8 @@ public class ContextListener implements ServletContextListener {
 
         sessionFactory = HibernateUtil.getSessionFactory();
 
-        ongoingMatches = new HashMap<>();
-
         sc.setAttribute("sessionFactory", sessionFactory);
-        sc.setAttribute("ongoingMatches", ongoingMatches);
+
     }
 
     @Override

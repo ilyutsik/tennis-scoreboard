@@ -4,12 +4,10 @@ import exception.InternalServerError;
 import game.OngoingMatch;
 import service.OngoingMatchesService;
 import model.Player;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import response.ResponseSender;
 import service.PlayerService;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,19 +23,7 @@ public class NewMatchController extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(NewMatchController.class);
 
-    SessionFactory sessionFactory;
-
     PlayerService playerService = new PlayerService();
-
-//    Map<UUID, OngoingMatch> ongoingMatches = new HashMap<>();
-
-
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-        super.init(servletConfig);
-//        ongoingMatches = (Map<UUID, OngoingMatch>) servletConfig.getServletContext().getAttribute("ongoingMatches");
-        sessionFactory = (SessionFactory) servletConfig.getServletContext().getAttribute("sessionFactory");
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -50,6 +36,20 @@ public class NewMatchController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String player1Name = req.getParameter("player1");
         String player2Name = req.getParameter("player2");
+
+        if (player1Name.length() > 20) {
+            req.setAttribute("error", "Player 1 name is too long");
+            req.getRequestDispatcher("new-match.jsp").forward(req, resp);
+        }
+        if (player2Name.length() > 20) {
+            req.setAttribute("error", "Player 2 name is too long");
+            req.getRequestDispatcher("new-match.jsp").forward(req, resp);
+        }
+
+        if (player2Name.equals(player1Name)) {
+            req.setAttribute("error", "Player names cant be equal");
+            req.getRequestDispatcher("new-match.jsp").forward(req, resp);
+        }
 
         try {
             Player player1 = playerService.getOrCreatePlayer(player1Name);
@@ -66,12 +66,6 @@ public class NewMatchController extends HttpServlet {
         } catch (InternalServerError e) {
             ResponseSender.sendErrorResponse(resp, e.getMessage(), HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
-
-//        log.info("Player 1: --------------------------->" + player1);
-
-
-
-
 
     }
 }

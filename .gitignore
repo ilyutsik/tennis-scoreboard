@@ -1,3 +1,5 @@
+tennis_socerboard
+tennis_socerboard.pub
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

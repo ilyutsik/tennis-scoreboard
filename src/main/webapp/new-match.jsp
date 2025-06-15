@@ -13,11 +13,13 @@
 
 <div class = "center-container">
     <h2 class="new-match-text">New match</h2>
-<form method="post" action="new-match" class="new-match-box">
+    <div class="error">${error}</div>
+    <form method="post" action="new-match" class="new-match-box">
     Player 1<br>
-    <input type="text" name="player1" required><br><br>
-    Player 2<br> <input type="text" name="player2" required><br><br>
-    <button type="submit">Начать</button>
+        <input type="text" name="player1" required><br><br>
+    Player 2<br>
+        <input type="text" name="player2" required><br><br>
+    <button type="submit">Start</button>
     </form>
 </div>
 </body>

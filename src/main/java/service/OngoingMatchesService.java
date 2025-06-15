@@ -2,14 +2,14 @@ package service;
 
 import game.OngoingMatch;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class OngoingMatchesService {
 
 
-    private final Map<UUID, OngoingMatch> ongoingMatches = new HashMap<>();
+    private final Map<UUID, OngoingMatch> ongoingMatches = new ConcurrentHashMap<>();
 
     private static final OngoingMatchesService INSTANCE = new OngoingMatchesService();
 

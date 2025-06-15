@@ -85,12 +85,14 @@
     display: flex;
     gap: 10px; /* расстояние между input и button */
     align-items: center;
+    margin-left: 80px;
 }
 
 .page-form {
     display: flex;
     gap: 10px;
     align-items: center;
+    margin-left: 80px;
 }
 
 .page-up-down {
@@ -98,6 +100,7 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    margin-left: 80px;
 }
 
 .page-up-down button {
